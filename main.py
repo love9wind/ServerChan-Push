@@ -61,7 +61,7 @@ class Action:
         """ Server酱推送 """
         dt = datetime.now()
         time = dt.strftime('%Y-%m-%d')
-        url = f'https://sc.ftqq.com/{self.secret}.send'
+        url = f'https://sctapi.ftqq.com/{self.secret}.send'
         data = {
             'text': f'资讯热文推送-{time}',
             'desp': f'{"".join(self.contents)}'
