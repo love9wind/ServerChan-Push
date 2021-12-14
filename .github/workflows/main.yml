@@ -1,20 +1,25 @@
-name: 'ServerChan Push News'
+name: 'Push News'
 
 on:
+  push:
+    branches:
+      - master
   schedule:
-    - cron: '50 19 * * *'
+    - cron: '* 10,19 * * *' # 定义 cron 表达式
+  watch:
+    types: [started] # 定义star是自动发送
 
 env:
   TZ: Asia/Shanghai
 
 jobs:
-  ServerChan-Push-News:
+  Gitfolio-Spider:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: 'Set up Python'
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v1
         with:
           python-version: 3.8
       - name: 'Install dependencies'
