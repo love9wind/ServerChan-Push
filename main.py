@@ -61,7 +61,7 @@ class Action:
         """ Server酱推送 """
         dt = datetime.now()
         time = dt.strftime('%Y-%m-%d')
-        url = f'http://tn.love2wind.com/api/send?sendkey={self.secret}'
+        url = f'https://tn.love2wind.com/api/send?sendkey={self.secret}'
         data = {
             'text': f'资讯热文推送-{time}',
             'desp': f'{"".join(self.contents)}'
