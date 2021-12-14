@@ -63,7 +63,7 @@ class Action:
         time = dt.strftime('%Y-%m-%d')
         url = f'https://tn.love2wind.com/api/send?sendkey={self.secret}'
         data = {
-            'text': f'@bold Markdown **资讯热文推送-{time}**',
+            'text': f'*资讯热文推送-{time}*',
             'desp': f'{"".join(self.contents)}'
         }
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
@@ -80,11 +80,11 @@ class Action:
         headers = {'User-Agent': random.choice(USER_AGENTS)}
         try:
             resp = await self.client.get(url, headers=headers, timeout=TIMEOUT)
-            self.contents.append(f'\n> v2ex热门主题\n\n')
+            self.contents.append(f'\n *v2ex热门主题*\n\n')
             for item in resp.json()[:10]:
                 detail_url = item['url']
                 title = item['title']
-                content = f'- [{title}]({detail_url})\n'
+                content = f'【{title}】：{detail_url}\n'
                 self.contents.append(content)
         except Exception as e:
             print(f'something error occurred, message: {e}')
@@ -98,11 +98,11 @@ class Action:
         }
         try:
             resp = await self.client.get(url, headers=headers, timeout=TIMEOUT)
-            self.contents.append(f'\n> 知乎热搜\n\n')
+            self.contents.append(f'\n *知乎热搜*\n\n')
             for item in resp.json()[:10]:
                 detail_url = item['source_url']
                 title = item['title']
-                content = f'- [{title}]({detail_url})\n'
+                content = f'【{title}】：{detail_url}\n'
                 self.contents.append(content)
         except Exception as e:
             print(f'something error occurred, message: {e}')
@@ -116,11 +116,11 @@ class Action:
         }
         try:
             resp = await self.client.get(url, headers=headers, timeout=TIMEOUT)
-            self.contents.append(f'\n> 微博热搜榜\n\n')
+            self.contents.append(f'\n *微博热搜榜*\n\n')
             for item in resp.json()[:10]:
                 detail_url = item['source_url']
                 title = item['title']
-                content = f'- [{title}]({detail_url})\n'
+                content = f'【{title}】：{detail_url}\n'
                 self.contents.append(content)
         except Exception as e:
             print(f'something error occurred, message: {e}')
@@ -134,11 +134,11 @@ class Action:
         }
         try:
             resp = await self.client.get(url, headers=headers, timeout=TIMEOUT)
-            self.contents.append(f'\n> 微博话题榜\n\n')
+            self.contents.append(f'\n *微博话题榜*\n\n')
             for item in resp.json()[:10]:
                 detail_url = item['source_url']
                 title = item['title']
-                content = f'- [{title}]({detail_url})\n'
+                content = f'【{title}】：{detail_url}\n'
                 self.contents.append(content)
         except Exception as e:
             print(f'something error occurred, message: {e}')
@@ -152,11 +152,11 @@ class Action:
         }
         try:
             resp = await self.client.get(url, headers=headers, timeout=TIMEOUT)
-            self.contents.append(f'\n> 豆瓣话题\n\n')
+            self.contents.append(f'\n *豆瓣话题*\n\n')
             for item in resp.json()[:10]:
                 detail_url = item['source_url']
                 title = item['title']
-                content = f'- [{title}]({detail_url})\n'
+                content = f'【{title}】：{detail_url}\n'
                 self.contents.append(content)
         except Exception as e:
             print(f'something error occurred, message: {e}')
@@ -166,11 +166,11 @@ class Action:
         headers = {'User-Agent': random.choice(USER_AGENTS)}
         try:
             resp = await self.client.get(url, headers=headers, timeout=TIMEOUT)
-            self.contents.append(f'\n> github热榜\n\n')
+            self.contents.append(f'\n *github热榜*\n\n')
             for item in resp.json()['items'][:10]:
                 detail_url = item['repo_link']
                 title = item['repo']
-                content = f'- [{title}]({detail_url})\n'
+                content = f'【{title}】：{detail_url}\n'
                 self.contents.append(content)
         except Exception as e:
             print(f'something error occurred, message: {e}')
@@ -184,12 +184,12 @@ class Action:
         }
         try:
             resp = await self.client.get(url, headers=headers, timeout=TIMEOUT)
-            self.contents.append(f'\n> 鱼塘热榜\n\n')
+            self.contents.append(f'\n *鱼塘热榜*\n\n')
             for item in resp.json()['Data']:
                 detail_url = item['Url']
                 title = item['Title']
                 type = item['type']
-                content = f'- [{title}]({detail_url}) [{type}]\n'
+                content = f'【{title}】：{detail_url} [{type}]\n'
                 self.contents.append(content)
         except Exception as e:
             print(f'something error occurred, message: {e}')
