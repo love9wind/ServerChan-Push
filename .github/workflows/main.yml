@@ -5,7 +5,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '* 10,19 * * *' # 定义 cron 表达式
+    - cron: '0 10,19 * * *' # 定义 cron 表达式
   watch:
     types: [started] # 定义star是自动发送
 
