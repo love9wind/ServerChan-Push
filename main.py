@@ -61,11 +61,7 @@ class Action:
         """ Server酱推送 """
         dt = datetime.now()
         time = dt.strftime('%Y-%m-%d')
-        url = f'https://tn.love2wind.com/api/send?sendkey={self.secret}&text='
-        data = {
-            'text': f'🔔资讯热文推送-{time}🔔',
-            'desp': f'{"".join(self.contents)}'
-        }
+        url = f'https://tn.love2wind.com/api/send?sendkey={self.secret}&desp=**🔔资讯热文推送-{time}🔔**\n\n{"".join(self.contents)}'
         headers = {'Content-Type': 'application/x-www-form-urlencoded'}
         try:
             resp = await self.client.post(url, headers=headers,
